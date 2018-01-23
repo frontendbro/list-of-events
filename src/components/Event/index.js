@@ -4,11 +4,14 @@ import './index.css';
 class Event extends Component {
 	render() {
 		return (
-			<div className="event">
-				nameEvent
+			<li className="event">
+				<h3>{this.props.title}</h3>
+				<p>Описание: {this.props.description}</p>
+				<p>Цена: {this.props.price}</p>
+				<p>Вид события: {this.props.type}</p>
 				<i class="material-icons">favorite</i>
 				<i class="material-icons">grade</i>
-			</div>
+			</li>
 		);
 	}
 }
