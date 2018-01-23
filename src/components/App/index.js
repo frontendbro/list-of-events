@@ -5,6 +5,7 @@ import FavoriteList from '../FavoriteList';
 
 
 class App extends Component {
+	/*дату положить в state, написать функцию фильтра вынести всё из компонента event, прокинуть функуии фильтра в клик тупого компонента*/
 	render() {
 		const data = [
 			{
@@ -42,12 +43,12 @@ class App extends Component {
 				description: "Описание выставки здесь",
 				price: 1200,
 				type: "exhibition",
+				like: false
 			}
 		];
 
-		// const favoriteData = () => {
-		// 	return data.filter()
-		// }
+		// const favoriteData = data.filter((item) => item.like);
+
 		const favoriteData = [
 			{
 				title: "Выставка Пикассо",

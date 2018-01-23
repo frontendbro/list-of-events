@@ -14,5 +14,6 @@
 }
 .event i{
 	cursor: pointer;
-	
 }
+.material-icons.orange { color: #FB8C00; }
+.material-icons.red { color: #B42025; }
