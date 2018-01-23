@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import EventsList from '../EventsList';
-import FavouriteList from '../FavouriteList';
+import FavoriteList from '../FavoriteList';
 
 
 class App extends Component {
@@ -30,8 +30,32 @@ class App extends Component {
 				description: "Описание выставки здесь",
 				price: 1200,
 				type: "exhibition",
+			},
+			{
+				title: "Выставка Малевича",
+				description: "Описание выставки здесь",
+				price: 2200,
+				type: "exhibition",
+			},
+			{
+				title: "Выставка Пикассо",
+				description: "Описание выставки здесь",
+				price: 1200,
+				type: "exhibition",
 			}
 		];
+
+		// const favoriteData = () => {
+		// 	return data.filter()
+		// }
+		const favoriteData = [
+			{
+				title: "Выставка Пикассо",
+				description: "Описание выставки здесь",
+				price: 1200,
+				type: "exhibition",
+			}
+		]
 
 		return (
 			<div className="App">
@@ -40,7 +64,7 @@ class App extends Component {
 				</header>
 				<div className="wrapper">
 					<EventsList eventListData = {data}/>
-					<FavouriteList />
+					<FavoriteList favoriteData = {favoriteData}/>
 				</div>
 			</div>
 		);

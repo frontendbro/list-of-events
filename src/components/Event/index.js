@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import './index.css';
 
 class Event extends Component {
+	constructor(props){
+		super(props)
+		this.state = {
+			favorite: false
+		}
+	}
+
+	favoriteChoose = (favorite) => {
+		this.setState({favorite: !this.state.favorite});
+	}
+
 	render() {
 		return (
 			<li className="event">
@@ -9,8 +20,8 @@ class Event extends Component {
 				<p>Описание: {this.props.description}</p>
 				<p>Цена: {this.props.price}</p>
 				<p>Вид события: {this.props.type}</p>
-				<i class="material-icons">favorite</i>
-				<i class="material-icons">grade</i>
+				<i className="favorite-icons material-icons">favorite</i>
+				<i className="grade-icons material-icons" onClick={this.favoriteChoose}>grade</i>
 			</li>
 		);
 	}
