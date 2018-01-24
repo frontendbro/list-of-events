@@ -47,7 +47,7 @@ class App extends Component {
 					price: 2200,
 					type: "exhibition",
 					id: 5,
-					like: true
+					like: false
 				},
 				{
 					title: "Выставка Пикассо",
@@ -62,19 +62,27 @@ class App extends Component {
 	}
 
 	//фильтрация по цене
-
+	filterPrice = () => {
+		
+	}
 	//фильтрация по типу
 
 	//поставить лайк
-	likeChoose = (like) => {
-		this.setState({like: !this.state.like});
+	likeChoose = (id) => {
+		this.setState({
+			data: this.state.data.map((item)=>{
+					if (item.id==id){
+						return Object.assign({}, item, {like: !item.like});
+					}
+					return item;
+			})
+	 })
 	}
 	//изменённая data для favoriteList
 	
-
 	//актуальная data для eventListData
 
-	render() {
+	render() {		
 		const eventListData = this.state.data;
 		const favoriteData = this.state.data.filter((item) => item.like);
 
@@ -85,7 +93,7 @@ class App extends Component {
 				</header>
 				<div className="wrapper">
 					<EventsList eventListData={eventListData} addToFavorite={this.likeChoose}/>
-					<FavoriteList favoriteData={favoriteData}/>
+					<FavoriteList favoriteDataProps={favoriteData}/>
 				</div>
 			</div>
 		);

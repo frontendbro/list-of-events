@@ -10,7 +10,7 @@ class FavouriteList extends Component {
 				<i class="material-icons">favorite</i>
 				<i class="material-icons">favorite</i>
 				<ul className="favorite-list">
-					{this.props.favoriteData.map((favoriteEvent, i) => {
+					{this.props.favoriteDataProps.map((favoriteEvent, i) => {
 						return 	<li>
 											<h3>{favoriteEvent['title']}</h3>
 											<p>Описание: {favoriteEvent['description']}</p>
