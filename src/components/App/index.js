@@ -5,58 +5,78 @@ import FavoriteList from '../FavoriteList';
 
 
 class App extends Component {
-	/*дату положить в state, написать функцию фильтра вынести всё из компонента event, прокинуть функуии фильтра в клик тупого компонента*/
+	constructor(props){
+		super(props)
+		this.state = {
+			data: [
+				{
+					title: "Концерт Depeche Mode",
+					description: "Описание концерта здесь",
+					price: 300,
+					type: "concert",
+					id: 1,
+					like: false
+				},
+				{
+					title: "Выставка Модильяни",
+					description: "Описание выставки здесь",
+					price: 200,
+					type: "exhibition",
+					id: 2,
+					like: false
+				},
+				{
+					title: "Концерт Metallica",
+					description: "Описание концерта здесь",
+					price: 1000,
+					type: "concert",
+					id: 3,
+					like: false
+				},
+				{
+					title: "Выставка Пикассо",
+					description: "Описание выставки здесь",
+					price: 1200,
+					type: "exhibition",
+					id: 4,
+					like: false
+				},
+				{
+					title: "Выставка Малевича",
+					description: "Описание выставки здесь",
+					price: 2200,
+					type: "exhibition",
+					id: 5,
+					like: true
+				},
+				{
+					title: "Выставка Пикассо",
+					description: "Описание выставки здесь",
+					price: 1200,
+					type: "exhibition",
+					id: 6,
+					like: false
+				}
+			]
+		}
+	}
+
+	//фильтрация по цене
+
+	//фильтрация по типу
+
+	//поставить лайк
+	likeChoose = (like) => {
+		this.setState({like: !this.state.like});
+	}
+	//изменённая data для favoriteList
+	
+
+	//актуальная data для eventListData
+
 	render() {
-		const data = [
-			{
-				title: "Концерт Depeche Mode",
-				description: "Описание концерта здесь",
-				price: 300,
-				type: "concert",
-			},
-			{
-				title: "Выставка Модильяни",
-				description: "Описание выставки здесь",
-				price: 200,
-				type: "exhibition",
-			},
-			{
-				title: "Концерт Metallica",
-				description: "Описание концерта здесь",
-				price: 1000,
-				type: "concert",
-			},
-			{
-				title: "Выставка Пикассо",
-				description: "Описание выставки здесь",
-				price: 1200,
-				type: "exhibition",
-			},
-			{
-				title: "Выставка Малевича",
-				description: "Описание выставки здесь",
-				price: 2200,
-				type: "exhibition",
-			},
-			{
-				title: "Выставка Пикассо",
-				description: "Описание выставки здесь",
-				price: 1200,
-				type: "exhibition",
-				like: false
-			}
-		];
-
-		// const favoriteData = data.filter((item) => item.like);
-
-		const favoriteData = [
-			{
-				title: "Выставка Пикассо",
-				description: "Описание выставки здесь",
-				price: 1200,
-				type: "exhibition",
-			}
-		]
+		const eventListData = this.state.data;
+		const favoriteData = this.state.data.filter((item) => item.like);
 
 		return (
 			<div className="App">
@@ -64,8 +84,8 @@ class App extends Component {
 					<h1 className="App-title">List of events</h1>
 				</header>
 				<div className="wrapper">
-					<EventsList eventListData = {data}/>
-					<FavoriteList favoriteData = {favoriteData}/>
+					<EventsList eventListData={eventListData} addToFavorite={this.likeChoose}/>
+					<FavoriteList favoriteData={favoriteData}/>
 				</div>
 			</div>
 		);
