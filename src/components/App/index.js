@@ -14,48 +14,42 @@ class App extends Component {
 					description: "Описание концерта здесь",
 					price: 300,
 					type: "concert",
-					id: 1,
-					like: false
+					id: 1
 				},
 				{
 					title: "Выставка Модильяни",
 					description: "Описание выставки здесь",
 					price: 200,
 					type: "exhibition",
-					id: 2,
-					like: false
+					id: 2
 				},
 				{
 					title: "Концерт Metallica",
 					description: "Описание концерта здесь",
 					price: 1000,
 					type: "concert",
-					id: 3,
-					like: false
+					id: 3
 				},
 				{
 					title: "Выставка Пикассо",
 					description: "Описание выставки здесь",
 					price: 1200,
 					type: "exhibition",
-					id: 4,
-					like: false
+					id: 4
 				},
 				{
 					title: "Выставка Малевича",
 					description: "Описание выставки здесь",
 					price: 2200,
 					type: "exhibition",
-					id: 5,
-					like: false
+					id: 5
 				},
 				{
 					title: "Выставка Пабло",
 					description: "Описание выставки здесь",
 					price: 1200,
 					type: "exhibition",
-					id: 6,
-					like: false
+					id: 6
 				}
 			],
 			filterValue: '',
@@ -73,18 +67,44 @@ class App extends Component {
 
 	//изменения state.data по like
 	likeChoose = (id) => {
+		let arrLikes = this.state.likeId;
+		let i = arrLikes.indexOf(id);
+		if (arrLikes.indexOf(id) !== -1){
+			arrLikes.splice(i,1);
+		} 
+		else {
+			arrLikes.push(id);
+		}
 		this.setState({
-			data: this.state.data.map((item)=>{
-				if (item.id===id){
-					return Object.assign({}, item, {like: !item.like});
-				}
-				return item;
-			})
+			likeId: arrLikes
 	 })
 	}
+	// likeChoose = (id) => {
+	// 	this.setState({
+	// 		data: this.state.data.map((item)=>{
+	// 			if (item.id===id){
+	// 				return Object.assign({}, item, {like: !item.like});
+	// 			}
+	// 			return item;
+	// 		})
+	//  })
+	// }
 
 	render() {
-		let favoriteData = this.state.data.filter((item) => item.like);
+		console.log(this.state.likeId);
+		
+		// let favoriteData = this.state.data.filter((item) => {
+		// 	return item.id === this.state.likeId[1];
+		// });
+		let favoriteData = this.state.data.filter((item) => {
+			return this.state.likeId.indexOf(item.id)!=-1;
+		});
+
+		// let favoriteData = this.state.likeId.map((item) => {
+		// 	for(let i = 0; i < this.state.data.length; i++) {
+		// 		if (this.state.data[i].id === item) return this.state.data[i];
+		// 	}
+		// });
 
 		const eventListData = this.state.data.filter((item) => {
 			let searchValue = item.title.toLowerCase();
