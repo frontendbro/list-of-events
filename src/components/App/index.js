@@ -57,23 +57,21 @@ class App extends Component {
 					id: 6,
 					like: false
 				}
-			]
+			],
+			filterValue: '',
+			likeId: []
 		}
 	}
 
-	//фильтрация по заголовку
+	//изменения state.data по поиску
 	filterTitle = (e) => {
-		const searchQuery = e.target.value.toLowerCase();
+		let searchQuery = e.target.value.toLowerCase();
 		this.setState({
-			data: this.state.data.filter((item) => {
-				let searchValue = item.title.toLowerCase();
-				return searchValue.indexOf(searchQuery) !== -1;
-			})
+			filterValue: searchQuery
 		});
 	}
-	//фильтрация по типу
 
-	//поставить лайк
+	//изменения state.data по like
 	likeChoose = (id) => {
 		this.setState({
 			data: this.state.data.map((item)=>{
@@ -84,13 +82,14 @@ class App extends Component {
 			})
 	 })
 	}
-	//изменённая data для favoriteList
-	
-	//актуальная data для eventListData
 
-	render() {		
-		const eventListData = this.state.data;
-		const favoriteData = this.state.data.filter((item) => item.like);
+	render() {
+		let favoriteData = this.state.data.filter((item) => item.like);
+
+		const eventListData = this.state.data.filter((item) => {
+			let searchValue = item.title.toLowerCase();
+			return searchValue.indexOf(this.state.filterValue) !== -1;
+		});
 
 		return (
 			<div className="App">
