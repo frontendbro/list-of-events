@@ -6,7 +6,7 @@ class ControlPanel extends Component {
 		return (
 			<div>
 				<span>Поиск: </span>
-				<input type="text"/>
+				<input type="text" onChange={this.props.inputChange}/>
 				<span>Сортировка по типу: </span>
 				<select name="" id="">
 					<option value="1">concert</option>

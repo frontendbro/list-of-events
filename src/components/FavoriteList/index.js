@@ -6,9 +6,9 @@ class FavouriteList extends Component {
 		return (
 			<div className="favorite-wrap">
 				<h3>Favourite List</h3>
-				<i class="material-icons">favorite</i>
-				<i class="material-icons">favorite</i>
-				<i class="material-icons">favorite</i>
+				<i className="material-icons">favorite</i>
+				<i className="material-icons">favorite</i>
+				<i className="material-icons">favorite</i>
 				<ul className="favorite-list">
 					{this.props.favoriteDataProps.map((favoriteEvent, i) => {
 						return 	<li>

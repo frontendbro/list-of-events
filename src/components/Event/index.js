@@ -9,7 +9,7 @@ class Event extends Component {
 				<p>Описание: {this.props.description}</p>
 				<p>Цена: {this.props.price}</p>
 				<p>Вид события: {this.props.type}</p>
-				<i onClick={() => this.props.addFavorite(this.props.id)} className={this.props.like == false ? 'favorite-icons material-icons' : 'favorite-icons material-icons red'}>favorite</i>
+				<i onClick={() => this.props.addFavorite(this.props.id)} className={this.props.like === false ? 'favorite-icons material-icons' : 'favorite-icons material-icons red'}>favorite</i>
 			</li>
 		);
 	}
