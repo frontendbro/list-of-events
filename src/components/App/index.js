@@ -75,11 +75,12 @@ class App extends Component {
 				}
 			],
 			filterValue: '',
-			likeId: []
+			likeId: [],
+			selectType: 'all'
 		}
 	}
 
-	//изменения state.data по поиску
+	//изменение state.data по поиску
 	filterTitle = (e) => {
 		let searchQuery = e.target.value.toLowerCase();
 		this.setState({
@@ -87,7 +88,7 @@ class App extends Component {
 		});
 	}
 
-	//изменения state.data по like
+	//изменение state.data по like
 	likeChoose = (id) => {
 		let arrLikes = this.state.likeId;
 		let i = arrLikes.indexOf(id);
@@ -101,36 +102,29 @@ class App extends Component {
 			likeId: arrLikes
 	 })
 	}
-	// likeChoose = (id) => {
-	// 	this.setState({
-	// 		data: this.state.data.map((item)=>{
-	// 			if (item.id===id){
-	// 				return Object.assign({}, item, {like: !item.like});
-	// 			}
-	// 			return item;
-	// 		})
-	//  })
-	// }
+
+	//изменение state.data по типу мероприятия
+	selectChange = (e) => {
+		this.setState ({
+			selectType: e.target.value
+		});	
+	}
 
 	render() {
-		console.log(this.state.likeId);
 		
-		// let favoriteData = this.state.data.filter((item) => {
-		// 	return item.id === this.state.likeId[1];
-		// });
 		let favoriteData = this.state.data.filter((item) => {
-			return this.state.likeId.indexOf(item.id)!=-1;
+			return this.state.likeId.indexOf(item.id)!== -1;
 		});
-
-		// let favoriteData = this.state.likeId.map((item) => {
-		// 	for(let i = 0; i < this.state.data.length; i++) {
-		// 		if (this.state.data[i].id === item) return this.state.data[i];
-		// 	}
-		// });
 
 		const eventListData = this.state.data.filter((item) => {
 			let searchValue = item.title.toLowerCase();
 			return searchValue.indexOf(this.state.filterValue) !== -1;
+		}).filter((item) => {
+			let type = item.type;
+			if (this.state.selectType === 'all'){
+				return true;
+			}
+			return type.indexOf(this.state.selectType) !== -1;
 		});
 
 		return (
@@ -139,7 +133,7 @@ class App extends Component {
 					<h1 className="App-title">{this.state.title}</h1>
 				</header>
 				<div className="wrapper">
-					<EventsList eventListData={eventListData} addToFavorite={this.likeChoose} inputFilter={this.filterTitle} likeState={this.state.likeId}/>
+					<EventsList eventListData={eventListData} addToFavorite={this.likeChoose} inputFilter={this.filterTitle} likeState={this.state.likeId} selectType={this.selectChange}/>
 					<FavoriteList favoriteDataProps={favoriteData} />
 				</div>
 			</div>

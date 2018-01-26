@@ -11,9 +11,10 @@ class ControlPanel extends Component {
 				</div>
 				<div className='control-wrap'>
 					<span className='control-wrap__label'>Сортировка по типу: </span>
-					<select name="" id="">
-						<option value="1">concert</option>
-						<option value="2">exhibition</option>
+					<select name="" id="" onChange={this.props.selectChange}>
+						<option value="all">all</option>
+						<option value="concert">concert</option>
+						<option value="exhibition">exhibition</option>
 					</select>
 				</div>
 				<div className='control-wrap'>
