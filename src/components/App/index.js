@@ -8,6 +8,7 @@ class App extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
+			title: 'List of events',
 			data: [
 				{
 					title: "Концерт Depeche Mode",
@@ -50,6 +51,27 @@ class App extends Component {
 					price: 1200,
 					type: "exhibition",
 					id: 6
+				},
+				{
+					title: "Концерт Metallica",
+					description: "Описание концерта здесь",
+					price: 1000,
+					type: "concert",
+					id: 7
+				},
+				{
+					title: "Концерт Nirvana",
+					description: "Описание концерта здесь",
+					price: 1000000,
+					type: "concert",
+					id: 8
+				},
+				{
+					title: "Концерт ДеЦл",
+					description: "Описание концерта здесь",
+					price: 0,
+					type: "concert",
+					id: 9
 				}
 			],
 			filterValue: '',
@@ -114,11 +136,11 @@ class App extends Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<h1 className="App-title">List of events</h1>
+					<h1 className="App-title">{this.state.title}</h1>
 				</header>
 				<div className="wrapper">
-					<EventsList eventListData={eventListData} addToFavorite={this.likeChoose} inputFilter={this.filterTitle}/>
-					<FavoriteList favoriteDataProps={favoriteData}/>
+					<EventsList eventListData={eventListData} addToFavorite={this.likeChoose} inputFilter={this.filterTitle} likeState={this.state.likeId}/>
+					<FavoriteList favoriteDataProps={favoriteData} />
 				</div>
 			</div>
 		);

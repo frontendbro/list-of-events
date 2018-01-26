@@ -1,10 +1,13 @@
 .App {
 	display: flex;
 	flex-direction: column;
+	flex-grow: 1;
 }
 
 .wrapper{
 	display: flex;
+	flex-grow: 1;
+	flex-shrink: 0;
 	padding: 16px;
 }
 
@@ -22,3 +25,8 @@
 	font-size: large;
 }
 
+@media only screen and (max-width : 1024px) {
+	.wrapper{
+		flex-direction: column-reverse;
+	}
+}

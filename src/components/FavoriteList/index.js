@@ -5,17 +5,14 @@ class FavouriteList extends Component {
 	render() {
 		return (
 			<div className="favorite-wrap">
-				<h3>Favourite List</h3>
-				<i className="material-icons">favorite</i>
-				<i className="material-icons">favorite</i>
-				<i className="material-icons">favorite</i>
+				<h3><i className='material-icons orange'>grade</i>Favourite List</h3>
 				<ul className="favorite-list">
 					{this.props.favoriteDataProps.map((favoriteEvent, i) => {
-						return 	<li>
-											<h3>{favoriteEvent['title']}</h3>
-											<p>Описание: {favoriteEvent['description']}</p>
-											<p>Цена: {favoriteEvent['price']}</p>
-											<p>Вид события: {favoriteEvent['type']}</p>
+						return 	<li className='favorite-item'>
+											<h4>{favoriteEvent['title']}</h4>
+											<p><b>Описание:</b> {favoriteEvent['description']}</p>
+											<p><b>Цена:</b> {favoriteEvent['price']}</p>
+											<p><b>Вид события:</b> {favoriteEvent['type']}</p>
 										</li>
 					})}
 				</ul>

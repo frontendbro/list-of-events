@@ -10,7 +10,7 @@ class EventsList extends Component {
 				<ControlPanel inputChange={this.props.inputFilter}/>
 				<ul className="events-list">
 					{this.props.eventListData.map((event, i) => 
-						<Event key={i} title={event['title']} description={event['description']} price={event['price']} type={event['type']} id={event['id']} like={event['like']} addFavorite = {this.props.addToFavorite}/>
+						<Event key={i} title={event['title']} description={event['description']} price={event['price']} type={event['type']} id={event['id']} like={event['like']} addFavorite = {this.props.addToFavorite} likeAdd={this.props.likeState}/>
 					)}
 				</ul>
 			</div>
