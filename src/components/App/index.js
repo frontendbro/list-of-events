@@ -6,7 +6,7 @@ import FavoriteList from '../FavoriteList';
 
 class App extends Component {
 	constructor(props){
-		super(props)
+		super(props);
 		this.state = {
 			title: 'List of events',
 			data: [
@@ -86,7 +86,7 @@ class App extends Component {
 		this.setState({
 			filterValue: searchQuery
 		});
-	}
+	};
 
 	//изменение state.data по like
 	likeChoose = (id) => {
@@ -101,17 +101,16 @@ class App extends Component {
 		this.setState({
 			likeId: arrLikes
 	 })
-	}
+	};
 
 	//изменение state.data по типу мероприятия
 	selectChange = (e) => {
 		this.setState ({
 			selectType: e.target.value
 		});	
-	}
+	};
 
 	render() {
-		
 		let favoriteData = this.state.data.filter((item) => {
 			return this.state.likeId.indexOf(item.id)!== -1;
 		});
